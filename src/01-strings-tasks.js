@@ -22,6 +22,7 @@ function concatenateStrings(/* value1, value2 */) {
   throw new Error('Not implemented');
 }
 
+// npm test src/01-string-task.js
 
 /**
  * Returns the length of given string.
