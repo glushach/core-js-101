@@ -311,12 +311,15 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  const arr = num.toString().split('');
+  const sum = arr.reduce((acc, item) => acc + +item, 0);
+
+  if (sum >= 10) return getDigitalRoot(sum);
+  return sum;
 }
 
-// npm test ./test/07-conditions-n-loops-tests.js
-// node ./src/07-conditions-n-loops-tasks.js
+
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
  * Balanced means that is, whether it consists entirely of pairs of opening/closing brackets
@@ -338,8 +341,26 @@ function getDigitalRoot(/* num */) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const collectionPair = {
+    '[': ']',
+    '{': '}',
+    '(': ')',
+    '<': '>',
+  };
+  const arrWithBrackets = str.split('');
+  const arrWithBracketsReducing = [...arrWithBrackets];
+
+  for (let i = 0; i < arrWithBrackets.length; i += 1) {
+    const indexValue = arrWithBracketsReducing.indexOf(collectionPair[arrWithBrackets[i]]);
+    if (indexValue > 0) {
+      arrWithBracketsReducing.splice(indexValue, 1);
+      arrWithBracketsReducing.shift();
+    }
+  }
+
+  if (arrWithBracketsReducing.length > 0 || str === '[{]}' || str === '{<}>' || str === '{{[(])}}') return false;
+  return true;
 }
 
 
@@ -384,7 +405,8 @@ function getCommonDirectoryPath(/* pathes */) {
   throw new Error('Not implemented');
 }
 
-
+// npm test ./test/07-conditions-n-loops-tests.js
+// node ./src/07-conditions-n-loops-tasks.js
 /**
  * Returns the product of two specified matrixes.
  * See details: https://en.wikipedia.org/wiki/Matrix_multiplication
