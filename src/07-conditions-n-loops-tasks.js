@@ -384,8 +384,8 @@ function isBracketsBalanced(str) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 
@@ -404,9 +404,6 @@ function toNaryString(/* num, n */) {
 function getCommonDirectoryPath(/* pathes */) {
   throw new Error('Not implemented');
 }
-
-// npm test ./test/07-conditions-n-loops-tests.js
-// node ./src/07-conditions-n-loops-tasks.js
 /**
  * Returns the product of two specified matrixes.
  * See details: https://en.wikipedia.org/wiki/Matrix_multiplication
@@ -464,7 +461,8 @@ function evaluateTicTacToePosition(/* position */) {
   throw new Error('Not implemented');
 }
 
-
+// npm test ./test/07-conditions-n-loops-tests.js
+// node ./src/07-conditions-n-loops-tasks.js
 module.exports = {
   getFizzBuzz,
   getFactorial,
