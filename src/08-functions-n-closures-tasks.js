@@ -23,8 +23,8 @@
  *   getComposition(Math.sin, Math.asin)(x) => Math.sin(Math.asin(x))
  *
  */
-function getComposition(/* f, g */) {
-  throw new Error('Not implemented');
+function getComposition(firstFn, SecondFn) {
+  return (arg) => firstFn(SecondFn(arg));
 }
 
 
@@ -44,8 +44,8 @@ function getComposition(/* f, g */) {
  *   power05(16) => 4
  *
  */
-function getPowerFunction(/* exponent */) {
-  throw new Error('Not implemented');
+function getPowerFunction(exponent) {
+  return (base) => base ** exponent;
 }
 
 
@@ -66,7 +66,8 @@ function getPolynom() {
   throw new Error('Not implemented');
 }
 
-
+// npm test ./test/08-functions-n-closures-tests.js
+// node ./src/08-functions-n-closures-tasks.js
 /**
  * Memoizes passed function and returns function
  * which invoked first time calls the passed function and then always returns cached result.
